@@ -1,0 +1,68 @@
+// VARIABLES
+$color-primario: #3498db;
+$color-secundario: #2ecc71;
+$color-texto: #333;
+$padding-base: 1rem;
+$fuente-principal: 'Segoe UI', sans-serif;
+
+// MIXIN
+@mixin boton($color-fondo) {
+  background-color: $color-fondo;
+  color: #fff;
+  border: none;
+  padding: $padding-base * 0.8 $padding-base * 1.5;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover { opacity: 0.8; }
+}
+
+// PRIMER CASO DE INTERPOLACIÓN
+$seccion: "encabezado";
+.#{$seccion} {
+  background-color: $color-primario;
+  color: white;
+  padding: $padding-base;
+
+  .titulo {
+    font-family: $fuente-principal;
+    margin: 0;
+  }
+
+  .menu {
+    margin-top: $padding-base / 2;
+    a {
+      color: white;
+      margin-right: $padding-base;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// SEGUNDO CASO DE INTERPOLACIÓN
+$tarjeta: "tarjeta";
+.#{$tarjeta} {
+  background-color: $color-secundario;
+  color: white;
+  padding: $padding-base;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem;
+
+  h2 { font-family: $fuente-principal; }
+
+  p {
+    color: $color-texto;
+    background-color: lighten($color-secundario, 40%);
+    padding: $padding-base / 2;
+  }
+
+  .btn-principal { @include boton($color-primario); }
+}
+
+.pie {
+  background-color: darken($color-primario, 15%);
+  color: white;
+  text-align: center;
+  padding: $padding-base;
+}

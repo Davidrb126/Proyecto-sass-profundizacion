@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Sass - Profundización</title>
+
+  <!-- Enlace al CSS compilado -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1 class="titulo">Sitio Web Frontend</h1>
+    <nav class="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Servicios</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="contenido">
+<article class="tarjeta">
+  <h2>Bienvenido</h2>
+  <p>Este sitio fue diseñado utilizando <strong>Sass (SCSS)</strong> para aplicar variables, anidación e interpolación.</p>
+
+  <!-- Botón funcional -->
+  <button class="btn-principal" onclick="mostrarInfo()">Ver más</button>
+
+  <!-- Contenido relevante oculto -->
+  <div id="info" style="display:none; margin-top: 1rem; background-color: #f8f9fa; padding: 1rem; border-radius: 8px; text-align:left; color:#222;">
+    <h3>¿Qué se aplicó en este proyecto?</h3>
+    <ul>
+      <li><strong>Variables:</strong> Se usaron 5 variables Sass para definir colores, tipografía y espaciados, mejorando la consistencia del diseño.</li>
+      <li><strong>Anidación:</strong> Permite organizar el código de forma jerárquica, reflejando la estructura del HTML.</li>
+      <li><strong>Interpolación:</strong> Se emplearon 2 casos para generar nombres de clases dinámicamente, facilitando la reutilización del código.</li>
+      <li><strong>Mixin:</strong> Se creó un mixin para los botones, que permite aplicar estilos coherentes en diferentes partes del sitio.</li>
+      <li><strong>Compilación automática:</strong> Sass genera el archivo <code>style.css</code> para que el navegador interprete correctamente los estilos.</li>
+    </ul>
+    <p>Con el uso de Sass, el código CSS es más limpio, escalable y fácil de mantener, cumpliendo los criterios del trabajo autónomo.</p>
+  </div>
+</article>
+
+<!-- Script funcional -->
+<script>
+  function mostrarInfo() {
+    const info = document.getElementById('info');
+    info.style.display = info.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+  <footer class="pie">
+    <p>&copy; 2025 - Proyecto académico UCompensar</p>
+  </footer>
+</body>
+</html>
