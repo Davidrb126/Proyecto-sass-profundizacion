@@ -1,0 +1,65 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">🎬 CinemaPlus</a>
+    <a class="nav-link text-light" routerLink="/" routerLinkActive="active">Inicio</a>
+  </div>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="container mt-5">
+  <h2 class="mb-4 fw-bold">📞 Contáctanos</h2>
+
+  <p class="text-muted">
+    Si deseas más información, déjanos tus datos y te contactaremos pronto.
+  </p>
+
+  <div class="card shadow-sm p-4 rounded-4">
+    <form (submit)="enviarFormulario(); $event.preventDefault()">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="form.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Correo</label>
+        <input
+          type="email"
+          class="form-control"
+          [(ngModel)]="form.correo"
+          name="correo"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Mensaje</label>
+        <textarea
+          class="form-control"
+          rows="4"
+          [(ngModel)]="form.mensaje"
+          name="mensaje"
+          required
+        ></textarea>
+      </div>
+
+      <button class="btn btn-primary w-100 mt-3 fw-bold">Enviar</button>
+    </form>
+  </div>
+
+  <div *ngIf="enviado" class="alert alert-success mt-4">
+    ¡Gracias por contactarnos! Te responderemos pronto.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center text-muted mt-5 mb-3">
+  CinemaPlus © 2025
+</footer>
+

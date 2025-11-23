@@ -1,0 +1,118 @@
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">🎬 CinemaPlus</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="menu" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacts" routerLinkActive="active">Contactos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<main class="container mt-4">
+  <h1 class="fw-bold">Bienvenido a CinemaPlus</h1>
+
+  <!-- Barra de búsqueda -->
+  <div class="row mb-3 g-2 align-items-center">
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar película..."
+          [(ngModel)]="buscarTexto"
+          (input)="aplicarFiltros()"
+        />
+        <button class="btn btn-outline-primary" (click)="aplicarFiltros()">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Filtro de Año -->
+    <div class="col-6 col-sm-3 col-md-2">
+      <select class="form-select" [(ngModel)]="filterYear" (change)="aplicarFiltros()">
+        <option value="">Todos los años</option>
+        <option *ngFor="let a of peliculas | mapAnios" [value]="a">{{ a }}</option>
+      </select>
+    </div>
+
+    <!-- Filtro de Orden -->
+    <div class="col-6 col-sm-3 col-md-2">
+      <select class="form-select" [(ngModel)]="sortBy" (change)="aplicarFiltros()">
+        <option value="nuevo">Más recientes</option>
+        <option value="antiguo">Más antiguos</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Listado de películas -->
+  <div class="row">
+    <div *ngFor="let p of peliculasFiltradas" class="col-12 col-sm-6 col-md-4 mb-3">
+      <div class="card h-100 cursor-pointer" (click)="verDetalle(p.id)">
+        <img [src]="p.imagen" [alt]="p.titulo" class="rounded" />
+        <div class="card-overlay">
+          <h5>{{ p.titulo }}</h5>
+          <p class="small">{{ p.sinopsis.substring(0, 100) }}...</p>
+          <p class="text-warning small">{{ p['año'] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalles de la película -->
+  <div *ngIf="mostrarDetalle" class="row mt-4">
+    <div class="col-12 mb-3">
+      <button class="btn btn-secondary" (click)="volverListado()">← Volver</button>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+      <div *ngIf="peliculaActual">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="let img of peliculaActual.gallery; let i = index"
+              [class.active]="i === 0"
+            >
+              <img class="d-block w-100 rounded" [src]="img" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <h2>{{ peliculaActual?.titulo }}</h2>
+      <p>{{ peliculaActual?.sinopsis }}</p>
+      <p><strong>Año:</strong> {{ peliculaActual?.['año'] }}</p>
+      <p><strong>Actores:</strong> {{ peliculaActual?.actores?.join(', ') }}</p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="text-center text-muted mt-4 mb-2">
+  CinemaPlus © 2025
+</footer>

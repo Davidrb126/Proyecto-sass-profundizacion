@@ -1,0 +1,39 @@
+/* Estilo general para los enlaces */
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para los enlaces de la navbar */
+.navbar-nav .nav-link {
+  color: #fff !important;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+/* Estilo para la barra de búsqueda y filtros */
+.input-group {
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Mejorar visibilidad de los controles */
+.container {
+  margin-top: 30px;
+}
+
+.card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
